@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cybersecurity Midterm Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5f7;--surface:#fff;--ink:#14212b;--muted:#566673;--line:#d5dde3;--accent:#0b6b8a;--accent-ink:#fff;--ok:#17703f;--okbg:#e2f4ea;--bad:#b3261e;--badbg:#fbe7e5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e161c;--surface:#17222b;--ink:#e6eef3;--muted:#98a9b5;--line:#2a3a46;--accent:#5cc0de;--accent-ink:#06222c;--ok:#6ad39a;--okbg:#12301f;--bad:#ff8f86;--badbg:#3a1a18}}
+:root[data-theme="dark"]{--bg:#0e161c;--surface:#17222b;--ink:#e6eef3;--muted:#98a9b5;--line:#2a3a46;--accent:#5cc0de;--accent-ink:#06222c;--ok:#6ad39a;--okbg:#12301f;--bad:#ff8f86;--badbg:#3a1a18}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 48px}
+header{padding:20px 0 8px}
+h1{font-size:1.5rem;line-height:1.2;margin:0 0 4px;letter-spacing:-.01em}
+header p{margin:0;color:var(--muted);font-size:.95rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+nav button{flex:1;min-height:46px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 1rem inherit;font-family:inherit;border-radius:10px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+section{margin-top:16px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+summary{padding:14px 16px;font-weight:600;cursor:pointer;min-height:48px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;color:var(--accent);line-height:1}
+details[open] summary::after{content:"–"}
+.body{padding:0 16px 8px}
+.sub{font-weight:600;color:var(--accent);margin:12px 0 6px;font-size:.95rem}
+dl{margin:0}
+dt{font-weight:600;margin-top:10px}
+dd{margin:2px 0 0;color:var(--muted)}
+code,.f{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.9rem;background:var(--bg);padding:2px 6px;border-radius:6px;color:var(--ink);overflow-wrap:anywhere}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 16px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:8px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.q{font-size:1.1rem;font-weight:600;line-height:1.4;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:left;min-height:52px;padding:12px 14px;margin-bottom:10px;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:10px;font:inherit;cursor:pointer}
+.opt:active{transform:scale(.99)}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.exp{margin:4px 0 14px;padding:12px 14px;border-radius:10px;background:var(--bg);border-left:4px solid var(--accent);font-size:.95rem}
+.exp b.ok{color:var(--ok)}.exp b.bad{color:var(--bad)}
+.primary,.ghost{min-height:50px;width:100%;border-radius:10px;font:600 1rem inherit;font-family:inherit;cursor:pointer;margin-top:8px}
+.primary{background:var(--accent);color:var(--accent-ink);border:0}
+.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.score{font-size:3rem;font-weight:700;margin:0;line-height:1}
+.hide{display:none}
+ul.miss{padding-left:18px;margin:8px 0}
+ul.miss li{margin-bottom:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Cybersecurity midterm</h1><p>Read the guide, then test yourself.</p></header>
+<nav role="tablist">
+<button role="tab" id="t-study" aria-selected="true">Study guide</button>
+<button role="tab" id="t-quiz" aria-selected="false">Quiz</button>
+</nav>
+<section id="study"></section>
+<section id="quiz" class="hide"></section>
+</div>
+<script>
+const GUIDE=[
+{t:"1. Basics of cybersecurity",s:[
+{h:"Four key concepts",i:[["Threat","A potential danger to a system or data."],["Risk","The probability of a threat exploiting a vulnerability."],["Vulnerability","A weakness in a system that can be exploited."],["Attack","An active attempt to compromise security."]]},
+{h:"Security objectives (CIA + authenticity)",i:[["Confidentiality","Private information is not disclosed to unauthorized individuals."],["Integrity","Data and programs are changed only in a specified, authorized manner."],["Availability","Systems work promptly and service is not denied to authorized users."],["Authenticity","Verifies that individuals or entities are genuine and can be trusted."]]}]},
+{t:"2. Modular arithmetic",s:[{h:"",i:[
+["Modulus (a mod n)","The remainder r when integer a is divided by positive integer n, where a = qn + r and 0 ≤ r < n."],
+["Congruence mod n","a ≡ b (mod n) when a and b leave the same remainder. Equivalent to: n divides (a − b)."],
+["Addition","<code>[(a mod n) + (b mod n)] mod n = (a + b) mod n</code>"],
+["Subtraction","<code>[(a mod n) − (b mod n)] mod n = (a − b) mod n</code>"],
+["Multiplication","<code>[(a mod n) × (b mod n)] mod n = (a × b) mod n</code>"]]}]},
+{t:"3. Classical cryptography",s:[
+{h:"Substitution ciphers",i:[["Caesar cipher","Replaces each letter with one a fixed number of positions down the alphabet. Encrypt: <code>C = (p + k) mod 26</code>. Decrypt: <code>p = (C − k) mod 26</code>."],["Vigenère cipher","Polyalphabetic substitution using a repeating keyword; each key letter sets a Caesar shift."],["Vernam cipher","Combines the plaintext bit stream with an equal-length key using XOR: <code>C = P ⊕ K</code>. The one-time pad is the unbreakable version: a truly random key, used once, then discarded."]]},
+{h:"Transposition ciphers",i:[["Rail-fence","Write plaintext diagonally in a zig-zag across a given depth, then read off by rows."],["Row transposition","Write plaintext into a rectangle row by row, then read it off by column in a permuted key order."]]}]},
+{t:"4. Block ciphers and DES",s:[
+{h:"Stream vs. block",i:[["Stream cipher","Encrypts a data stream one bit or one byte at a time."],["Block cipher","Encrypts a block of data (typically 64 or 128 bits) as one unit."]]},
+{h:"Diffusion and confusion",i:[["Diffusion","Spreads the plaintext's statistical structure across the ciphertext, so each plaintext digit affects many ciphertext digits."],["Confusion","Makes the relationship between ciphertext statistics and the key as complex as possible."]]},
+{h:"Feistel structure",i:[["Rounds","Alternating rounds of substitution and permutation."],["Each round","Split the block into left (LE) and right (RE) halves. Apply round function F to RE (expansion, XOR key mixing, S-boxes, P-box), XOR the result with LE, then swap halves."]]},
+{h:"DES",i:[["General structure","16-round Feistel cipher. 64-bit blocks, 56-bit key. Initial Permutation (IP), 16 rounds with subkeys from Permuted Choices, 32-bit swap, then Inverse Initial Permutation (IP⁻¹)."],["Avalanche effect","A small change in the plaintext or key causes a large, cascading change in the ciphertext."]]}]}
+];
+const QS=[
+["Which term is the probability that a threat exploits a vulnerability?",["Risk","Threat","Attack","Authenticity"],0,"Risk combines the chance a threat exploits a vulnerability."],
+["A weakness in a system that can be exploited is called a…",["Vulnerability","Threat","Risk","Attack"],0,"A vulnerability is the weakness. A threat is the potential danger."],
+["An active attempt to compromise security is a(n)…",["Attack","Threat","Vulnerability","Risk"],0,"A threat is only potential. An attack is an active attempt."],
+["Which objective keeps private information from reaching unauthorized people?",["Confidentiality","Integrity","Availability","Authenticity"],0,"Confidentiality prevents unauthorized disclosure."],
+["Data may be changed only in a specified and authorized manner. Which objective is this?",["Integrity","Confidentiality","Availability","Authenticity"],0,"This is the definition of integrity."],
+["A denial-of-service attack most directly violates which objective?",["Availability","Confidentiality","Integrity","Authenticity"],0,"Availability means service is not denied to authorized users."],
+["Which objective verifies that users or entities are genuine and trustworthy?",["Authenticity","Integrity","Confidentiality","Availability"],0,"Authenticity is about verifying identity and trust."],
+["What is 38 mod 7?",["3","4","5","2"],0,"38 = 5·7 + 3, so the remainder is 3."],
+["a ≡ b (mod n) is equivalent to saying…",["n divides (a − b)","n divides (a + b)","a = b","a divides n"],0,"Congruent numbers differ by a multiple of n."],
+["Compute (14 × 9) mod 5.",["1","0","2","4"],0,"14 mod 5 = 4 and 9 mod 5 = 4. 4 × 4 = 16, and 16 mod 5 = 1."],
+["Which formula decrypts a Caesar cipher?",["p = (C − k) mod 26","p = (C + k) mod 26","p = (C × k) mod 26","p = (C ⊕ k) mod 26"],0,"Encrypt adds the shift k. Decrypt subtracts it."],
+["With a Caesar shift of k = 3, plaintext X (position 23) encrypts to…",["A","Z","B","C"],0,"(23 + 3) mod 26 = 0, which is A."],
+["The Vigenère cipher is best described as…",["A polyalphabetic substitution using a repeating keyword","A transposition using a zig-zag","A XOR of bits with a random key","A 16-round Feistel cipher"],0,"Each key letter selects a different Caesar shift."],
+["The Vernam cipher computes ciphertext as…",["C = P ⊕ K","C = (P + K) mod 26","C = P × K","C = P mod K"],0,"Vernam uses XOR of plaintext and an equal-length key."],
+["What makes a one-time pad unbreakable?",["A truly random key, used once and discarded","A key shorter than the message","A repeating keyword","Using 16 rounds"],0,"Key must be random, as long as the message, and never reused."],
+["Which cipher writes plaintext in a zig-zag pattern and reads it off by rows?",["Rail-fence","Caesar","Vigenère","Vernam"],0,"Rail-fence is a transposition cipher."],
+["How does the row transposition cipher work?",["Write row by row, read column by column in permuted key order","Shift each letter by a fixed amount","XOR with a random key","Use S-boxes and P-boxes"],0,"The key permutes the order in which columns are read."],
+["Which cipher type encrypts one bit or byte at a time?",["Stream cipher","Block cipher","Feistel cipher","Rail-fence cipher"],0,"Block ciphers handle many bits at once, such as 64 or 128."],
+["Diffusion means…",["Each plaintext digit affects many ciphertext digits","The key–ciphertext relationship is made complex","The key is used only once","The block is split in half"],0,"The other choice describing key complexity is confusion."],
+["Confusion aims to…",["Make the ciphertext–key relationship as complex as possible","Spread plaintext statistics across the ciphertext","Shorten the key","Swap the halves of a block"],0,"Confusion hides how the key relates to the ciphertext."],
+["In a Feistel round, what happens after F is applied to the right half?",["It is XORed with the left half, then the halves are swapped","It replaces the key","It is discarded","The block is rotated by 3"],0,"Apply F to RE, XOR with LE, then swap."],
+["Which operations make up the Feistel round function F described in class?",["Expansion, key XOR, S-boxes, P-box","Row and column reads","Mod 26 addition only","Zig-zag writing"],0,"F expands, mixes in the subkey by XOR, substitutes with S-boxes, then permutes with a P-box."],
+["DES uses what block size, key size, and number of rounds?",["64-bit block, 56-bit key, 16 rounds","128-bit block, 56-bit key, 10 rounds","64-bit block, 128-bit key, 16 rounds","56-bit block, 64-bit key, 8 rounds"],0,"DES: 64-bit blocks, 56-bit key, 16 Feistel rounds."],
+["A small change in the plaintext or key that cascades through the ciphertext is the…",["Avalanche effect","Feistel effect","Vernam effect","Congruence effect"],0,"The avalanche effect is a desirable property of strong ciphers."]
+];
+const $=s=>document.querySelector(s);
+// Study guide
+$("#study").innerHTML=GUIDE.map((g,n)=>`<details${n==0?" open":""}><summary>${g.t}</summary><div class="body">${g.s.map(x=>(x.h?`<div class="sub">${x.h}</div>`:"")+"<dl>"+x.i.map(i=>`<dt>${i[0]}</dt><dd>${i[1]}</dd>`).join("")+"</dl>").join("")}</div></details>`).join("")+`<button class="primary" id="go">Take the quiz</button>`;
+// Tabs
+function tab(w){const q=w=="quiz";$("#study").classList.toggle("hide",q);$("#quiz").classList.toggle("hide",!q);$("#t-study").setAttribute("aria-selected",!q);$("#t-quiz").setAttribute("aria-selected",q);window.scrollTo(0,0);if(q&&!S.started)start(QS.map((_,i)=>i))}
+$("#t-study").onclick=()=>tab("study");$("#t-quiz").onclick=()=>tab("quiz");$("#go").onclick=()=>tab("quiz");
+// Quiz
+const S={started:false,order:[],i:0,score:0,missed:[],answered:false};
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function start(ids){S.started=true;S.order=shuffle(ids);S.i=0;S.score=0;S.missed=[];render()}
+function render(){
+ const box=$("#quiz");
+ if(S.i>=S.order.length){return done()}
+ const [q,opts,ans,why]=QS[S.order[S.i]];const correct=opts[ans];S.answered=false;
+ const shown=shuffle(opts);
+ box.innerHTML=`<div class="card"><div class="bar"><i style="width:${S.i/S.order.length*100}%"></i></div><div class="meta"><span>Question ${S.i+1} of ${S.order.length}</span><span>Score ${S.score}</span></div><p class="q"></p><div id="opts"></div><div id="fb"></div></div>`;
+ box.querySelector(".q").textContent=q;
+ const o=$("#opts");
+ shown.forEach(t=>{const b=document.createElement("button");b.className="opt";b.textContent=t;b.onclick=()=>pick(b,t==correct,correct,why);o.appendChild(b)});
+}
+function pick(btn,ok,correct,why){
+ if(S.answered)return;S.answered=true;
+ document.querySelectorAll(".opt").forEach(b=>{b.disabled=true;if(b.textContent==correct)b.classList.add("ok")});
+ if(ok){S.score++}else{btn.classList.add("bad");S.missed.push(S.order[S.i])}
+ const last=S.i==S.order.length-1;
+ $("#fb").innerHTML=`<div class="exp"><b class="${ok?"ok":"bad"}">${ok?"Correct.":"Not quite."}</b> ${why}</div><button class="primary" id="next">${last?"See results":"Next question"}</button>`;
+ $("#next").onclick=()=>{S.i++;render();window.scrollTo(0,0)};
+ $("#next").scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+function done(){
+ const n=S.order.length,pct=Math.round(S.score/n*100);
+ $("#quiz").innerHTML=`<div class="card"><p class="meta">Quiz complete</p><p class="score">${S.score}/${n}</p><p>${pct}% correct. ${pct>=90?"You're ready for the exam.":pct>=70?"Solid. Review the missed topics once more.":"Re-read the study guide, then try again."}</p>${S.missed.length?`<div class="sub" style="font-weight:600;color:var(--accent)">Review these</div><ul class="miss">${S.missed.map(i=>`<li>${QS[i][0].replace(/</g,"&lt;")}<br><small style="color:var(--muted)">Answer: ${QS[i][1][QS[i][2]].replace(/</g,"&lt;")}</small></li>`).join("")}</ul><button class="primary" id="rm">Retry missed questions</button>`:""}<button class="${S.missed.length?"ghost":"primary"}" id="ra">Restart full quiz</button><button class="ghost" id="bs">Back to study guide</button></div>`;
+ if(S.missed.length)$("#rm").onclick=()=>start(S.missed.slice());
+ $("#ra").onclick=()=>start(QS.map((_,i)=>i));
+ $("#bs").onclick=()=>tab("study");
+}
+</script>
+</body>
+</html>
